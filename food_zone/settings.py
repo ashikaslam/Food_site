@@ -134,12 +134,17 @@ USE_TZ = True
 MEDIA_URL = 'media/'
 MEDIA_ROOT = BASE_DIR / 'media'
 
-STATIC_URL = 'static/'
 
 
+# URL to serve static files (CSS, JavaScript, images)
+STATIC_URL = '/static/'
 
+# Absolute filesystem path to the directory that will hold static files.
+STATIC_ROOT = BASE_DIR / 'staticfiles'
+
+# Additional locations of static files
 STATICFILES_DIRS = [
-    BASE_DIR/'static',
+    BASE_DIR / 'static',
 ]
 
 
