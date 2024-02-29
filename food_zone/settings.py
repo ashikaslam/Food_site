@@ -140,7 +140,7 @@ MEDIA_ROOT = BASE_DIR / 'media'
 STATIC_URL = '/static/'
 
 # Absolute filesystem path to the directory that will hold static files.
-STATIC_ROOT = BASE_DIR / 'staticfiles'
+STATIC_ROOT = BASE_DIR / 'static'
 
 # Additional locations of static files
 STATICFILES_DIRS = [
