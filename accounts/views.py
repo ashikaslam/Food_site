@@ -38,13 +38,13 @@ def log_in(request):
        user = authenticate(username= username, password= password)
        if user is not None:
            login(request,user)
-           return redirect('home')
+           return redirect('user_profile')
 
    return render(request,'login.html')
 
 def log_out(request):
     logout(request)
-    return redirect('user_profile')
+    return redirect('login')
 
 def user_profile(request):
     return render(request,'profile.html')
