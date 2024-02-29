@@ -7,7 +7,7 @@ from django.contrib.auth import update_session_auth_hash
 from django.contrib.auth.forms import PasswordChangeForm
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
-from .forms import UpdateUserForm
+from .forms import User_profile_update
 from order.models import Order
 # Create your views here.
 
@@ -53,7 +53,7 @@ def user_profile(request):
 @login_required
 def profileUP(request):
     if request.method == 'POST':
-        user_form = UpdateUserForm(request.POST, instance=request.user)
+        user_form = User_profile_update(request.POST, instance=request.user)
 
         if user_form.is_valid():
             user_form.save()
@@ -61,9 +61,9 @@ def profileUP(request):
             messages.success(request, 'Your profile is updated successfully')
             return redirect('user_profile')
     else:
-        user_form = UpdateUserForm(instance=request.user)
+        user_form = User_profile_update(instance=request.user)
        
-    return render(request, 'profile_p.html', {'user_form': user_form})
+    return render(request, 'profile_p.html', {'form': user_form})
 
 
 

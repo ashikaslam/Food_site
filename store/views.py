@@ -14,13 +14,13 @@ def search_feature(request):
         page = request.GET.get('page')
         paginator = Paginator( all_food, 4)
         all_food_for_page = paginator.get_page(page)
-        print(">>", search_query)
+        
     
     else:
         
         page = request.GET.get('page')
         search_query = request.GET.get('search_query')
-        print("<<", search_query," and ",page)
+        
         all_food = Food.objects.filter(food_name__contains=search_query)
         paginator = Paginator( all_food, 4)
         all_food_for_page = paginator.get_page(page)

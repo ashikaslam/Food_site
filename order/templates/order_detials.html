@@ -87,6 +87,8 @@
     <div class="row row-cols-1 row-cols-sm-2 row-cols-md-4 g-4">
 
         {% for i in all_items %}
+
+
         <div class="col">
             <div class="card h-100">
                 <img src="{{ i.food.food_img.url }}" class="card-img-top" alt="{{ product.title }}">
@@ -94,8 +96,16 @@
                     <h5 class="card-title"><a href="{% url 'pro_detials' i.food.id %}">{{ i.food.food_name }}</a></h5>
                 </div>
                 <h4>quantity : {{ i.quantity }}</h4>
+                {% if request.user in i.food.commentors.all %}
+                    <a href="{% url 'edit_my_review' i.food.id %}" class="btn btn-primary">Edit your review</a>
+                    {% else %}
+                    <a href="{% url 'give_reviews' i.food.id %}" class="btn btn-primary">Rate this food</a>
+                {% endif %}
             </div>
         </div>
+
+
+
         {% endfor %}
 
 

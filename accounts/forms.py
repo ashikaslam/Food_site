@@ -19,7 +19,24 @@ class RegistrationForm(UserCreationForm):
 }
 
 
-             
+
+
+class User_profile_update(forms.ModelForm):
+    class Meta:
+        model = User
+        fields = [ 'first_name', 'last_name', 'email']
+        
+       
+       
+        widgets = {
+    'email': forms.EmailInput(attrs={'class': 'form-control', 'required': True}),
+    'first_name': forms.TextInput(attrs={'class': 'form-control', 'required': True}),
+    'last_name': forms.TextInput(attrs={'class': 'form-control', 'required': True}),
+   
+  
+}
+
+           
         
 
 
