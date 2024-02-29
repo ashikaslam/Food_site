@@ -20,7 +20,9 @@ def sign_up(request):
          if form.is_valid():
              user = form.save()
              login(request,user)
-             return redirect('home')
+             return redirect('user_profile')
+         
+             
         
     else:
         form = RegistrationForm()    
@@ -42,7 +44,7 @@ def log_in(request):
 
 def log_out(request):
     logout(request)
-    return redirect('home')
+    return redirect('user_profile')
 
 def user_profile(request):
     return render(request,'profile.html')
@@ -72,7 +74,7 @@ def change_password(request):
             user = form.save()
             update_session_auth_hash(request, user) 
             messages.success(request, 'Your password was successfully updated!')
-            return redirect('home')
+            return redirect('user_profile')
         else:
             messages.error(request, 'Please correct the error below.')
     else:
