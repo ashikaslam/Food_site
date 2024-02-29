@@ -142,7 +142,9 @@ MEDIA_ROOT = BASE_DIR / 'media'
 STATIC_URL = '/static/'
 
 
-STATIC_ROOT = BASE_DIR / 'staticfiles'
+STATIC_ROOT = BASE_DIR / 'staticfiles' ## i have to add this fo deploying in render   
+# and then give this commad    py manage.py collectstatic
+
 
 STATICFILES_DIRS = [
     BASE_DIR/'static',
