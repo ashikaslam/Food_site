@@ -25,7 +25,7 @@ def search_feature(request):
         paginator = Paginator( all_food, 4)
         all_food_for_page = paginator.get_page(page)
 
-
+    if all_food.count()==0: return render(request,'noitemfound.html')
     catagories = Category.objects.all()
     return render(request,'search_item.html',{'items':all_food_for_page,'catagories':catagories,'search_query':search_query})
     
