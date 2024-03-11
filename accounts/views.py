@@ -160,8 +160,7 @@ def send_mail_after_registration(email,token ):
     
 
     subject = 'Your account needs to be verified'
-    message = f'Hi, please click the following link to verify your account:
-      http://127.0.0.1:8000/accounts/verify/{token}'
+    message = f'Hi, please click the following link to verify your account: http://127.0.0.1:8000/accounts/verify/{token}'
     email_from = settings.EMAIL_HOST_USER
     recipient_list = [email]
 
