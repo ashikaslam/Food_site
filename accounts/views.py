@@ -65,6 +65,7 @@ def log_in(request):
    if request.method=='POST':
        username = request.POST['username']
        password = request.POST['password']
+       print(request.POST)
        user = authenticate(username= username, password= password)
        if user is not None:
            login(request,user)
@@ -160,7 +161,7 @@ def send_mail_after_registration(email,token ):
     
 
     subject = 'Your account needs to be verified'
-    message = f'Hi, please click the following link to verify your account: http://127.0.0.1:8000/accounts/verify/{token}'
+    message = f'Hi, please click the following link to verify your account: https://food-site-03s7.onrender.com//accounts/verify/{token}'
     email_from = settings.EMAIL_HOST_USER
     recipient_list = [email]
 
