@@ -24,6 +24,7 @@ urlpatterns = [
     path('',home,name='home'),
 
    path('accounts/', include('accounts.urls')) ,
+    path('accounts/', include('allauth.urls')),   # Include Django AllAuth URLs
    path('store/', include('store.urls')) ,
    path('cart/', include('cart.urls')) ,
    path('order/', include('order.urls')) ,

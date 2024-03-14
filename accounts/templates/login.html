@@ -43,8 +43,15 @@
     </form>
     
   </div>
-  
+
+
   <p> forgot my password  <a href="{% url 'password_reset' %}"> reste my pass </a>   </p>
 <p>if you do not have a accout then  <a href="{% url 'sign_up' %}"> singup</a>   </p>
 
+{% load socialaccount %}
+<a href="{% provider_login_url 'google' process=process scope=scope auth_params=auth_params %}">
+  Continue with Google
+</a>
+
   {% endblock %}
+  

@@ -21,8 +21,23 @@
   </form>
 </div>
 
+</br>
+<div class="row">
+  <div class="col-md-8 mx-auto social-container my-2 order-md-1">
+    
+     
+     
+  </div>
+</div>
 
 <p>if you already have a accout then  <a href="{% url 'login' %}"> singin</a>   </p>
 
+
+
+{% load socialaccount %}
+
+<a href="{% provider_login_url 'google' process=process scope=scope auth_params=auth_params %}">
+    Continue with Google
+</a>
   
 {% endblock %}

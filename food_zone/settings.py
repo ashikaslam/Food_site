@@ -50,6 +50,18 @@ INSTALLED_APPS = [
     
     "crispy_forms", 
     "crispy_bootstrap5",
+
+
+
+     'allauth',
+    'allauth.account',
+    'allauth.socialaccount',
+    'allauth.socialaccount.providers.google',
+
+
+
+
+     
     
    
 ]
@@ -66,6 +78,10 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+
+     "allauth.account.middleware.AccountMiddleware",
+
+  
 ]
 
 ROOT_URLCONF = 'food_zone.urls'
@@ -81,6 +97,8 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+            
+
             ],
         },
     },
@@ -175,3 +193,30 @@ EMAIL_PORT = 587
 LOGIN_REDIRECT_URL = 'user_profile'
 LOGIN_URL = 'login'
 LOGOUT_URL = 'log_out'
+LOGOUT_REDIRECT_URL = 'login'
+
+
+
+
+
+
+AUTHENTICATION_BACKENDS = [
+    'allauth.account.auth_backends.AuthenticationBackend',
+]
+
+
+
+
+SOCIALACCOUNT_PROVIDERS = {
+    'google': {
+        'SCOPE': [
+            'profile',
+            'email',
+        ],
+        'AUTH_PARAMS': {
+            'access_type': 'online',
+        },
+        'OAUTH_PKCE_ENABLED': True,
+    },
+    
+}

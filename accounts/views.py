@@ -161,7 +161,7 @@ def send_mail_after_registration(email,token ):
     
 
     subject = 'Your account needs to be verified'
-    message = f'Hi, please click the following link to verify your account: https://food-site-03s7.onrender.com//accounts/verify/{token}'
+    message = f'Hi, please click the following link to verify your account: https://food-site-03s7.onrender.com/accounts/verify/{token}'
     email_from = settings.EMAIL_HOST_USER
     recipient_list = [email]
 
@@ -177,8 +177,12 @@ def send_mail_after_registration(email,token ):
 @login_required
 def send_varificatoin_email(request):
      auth_token = str(uuid.uuid4())
-     profile =  Profile.objects.get(user=request.user)
-     profile.auth_token=auth_token
+     try:
+       profile =  Profile.objects.get(user=request.user)
+       profile.auth_token=auth_token
+     except Exception as e:
+        profile =  Profile.objects.create(user = request.user , auth_token = auth_token)
+         
      profile.save()
      send_mail_after_registration(request.user.email,auth_token)
      return render(request,'emilcheck.html')
