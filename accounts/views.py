@@ -161,7 +161,7 @@ def send_mail_after_registration(email,token ):
     
 
     subject = 'Your account needs to be verified'
-    message = f'Hi, please click the following link to verify your account: https://food-site-03s7.onrender.com//accounts/verify/{token}'
+    message = f'Hi, please click the following link to verify your account: https://food-site-03s7.onrender.com/accounts/verify/{token}'
     email_from = settings.EMAIL_HOST_USER
     recipient_list = [email]
 
