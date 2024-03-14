@@ -3,6 +3,11 @@ from . models import Order
 from cart.models import Cart_item
 from.forms import OrderForm
 from django.contrib.auth.decorators import login_required
+from.models import Profile
+
+import uuid
+from django.conf import settings
+from django.core.mail import send_mail
 # Create your views here.
 
 
@@ -12,8 +17,17 @@ from django.contrib.auth.decorators import login_required
 def maek_order(request):
     if request.user.is_authenticated:
        
+
+
+       try:
+         profile =request.user.profile
+       except Exception as e:
+          auth_token = str(uuid.uuid4())
+          profile =  Profile.objects.create(user = request.user , auth_token = auth_token)
+          profile.save()
+
        if not request.user.profile.is_verified :
-             return redirect('send_varificatoin_email')
+               return redirect('send_varificatoin_email')
        
        all_items = Cart_item.objects.filter(user=request.user,done=False) 
        if  all_items.count()==0:return redirect('home')
