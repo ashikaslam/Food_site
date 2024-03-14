@@ -3,7 +3,7 @@ from . models import Order
 from cart.models import Cart_item
 from.forms import OrderForm
 from django.contrib.auth.decorators import login_required
-from.models import Profile
+from accounts.models import Profile
 
 import uuid
 from django.conf import settings
